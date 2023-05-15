@@ -1,0 +1,47 @@
+// Gradle 5부터는 Gradle Plugin 사용법에 변경이 있습니다.
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '2.4.1'
+    id 'io.spring.dependency-management' version '1.0.10.RELEASE'
+}
+group 'com.jd.book'
+//버전 자동 변경
+version '1.0.4-SNAPSHOT-'+new Date().format("yyyyMMddHHmmss")
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
+//for Junit 5 (Junit5를 사용하기 위해서는 필수러 선언되어야함)
+test {
+    useJUnitPlatform()
+}
+
+dependencies {
+    //Gradle 6가 되면서 compile, testCompile은 Soft Deprecate 되었습니다
+    //그 대신 implementation, testImplementation가 추가되었습니다.
+
+    //1. implementation : 항상 적용.
+    //2. debugImplementation : 디버그 빌드 시에만 적용.
+    //3. releaseImplementation : 릴리즈 빌드 시에만 적용.
+    //4. testImplementation : 테스트 코드를 수행할 때만 적용.
+
+    implementation('org.springframework.boot:spring-boot-starter-web')
+    implementation('org.springframework.boot:spring-boot-starter-mustache')
+
+    // lombok
+    implementation('org.projectlombok:lombok')
+    annotationProcessor('org.projectlombok:lombok')
+    testImplementation('org.projectlombok:lombok')
+    testAnnotationProcessor('org.projectlombok:lombok')
+
+    implementation('org.springframework.boot:spring-boot-starter-data-jpa')
+    implementation("org.mariadb.jdbc:mariadb-java-client")
+    implementation('com.h2database:h2')
+
+
+
+    testImplementation('org.springframework.boot:spring-boot-starter-test')
+}
