@@ -1,4 +1,4 @@
-<!DOCYPE HTML>
+<!DOCTYPE  HTML>
 <html>
 <head>
     <title>인도시스템_알파`</title>
@@ -9,12 +9,18 @@
 <body>
 {{>layout/header}}
 <h1>안전정보 인도 시스템 알파버전</h1>
-<div class="col-md-12">
+<div class="col-md-12">tj
     <div class="row">
         <div class = "col-md-6">
             <a href="/posts/save" role="button"
                class="btn btn-primary">글등록</a>
-
+                {{#userName}}
+                    Logged in as: <span id="member">{{userName}}</span>
+                    <a href="/logout" class="btn btn-info active" role="button">Logout</a>
+                {{/userName}}
+                {{^userName}}
+                    <a href="/oauth2/authorization/google" class="btn btn-success active" role="button">Google Login</a>
+                {{/userName}}
         </div>
     </div>
     <br>

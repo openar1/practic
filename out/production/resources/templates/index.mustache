@@ -1,4 +1,4 @@
-<!DOCYPE HTML>
+<!DOCTYPE  HTML>
 <html>
 <head>
     <title>인도시스템_알파`</title>
@@ -14,7 +14,13 @@
         <div class = "col-md-6">
             <a href="/posts/save" role="button"
                class="btn btn-primary">글등록</a>
-
+                {{#userName}}
+                    Logged in as: <span id="member">{{userName}}</span>
+                    <a href="/logout" class="btn btn-info active" role="button">Logout</a>
+                {{/userName}}
+                {{^userName}}
+                    <a href="/oauth2/authorization/google" class="btn btn-success active" role="button">Google Login</a>
+                {{/userName}}
         </div>
     </div>
     <br>
